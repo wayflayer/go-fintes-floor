@@ -10,7 +10,6 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
-// MockDataParser is a mock implementation of the DataParser interface
 type MockDataParser struct {
 	mock.Mock
 }
@@ -19,12 +18,10 @@ func (m *MockDataParser) Parse(data string) error {
 	args := m.Called(data)
 	return args.Error(0)
 }
-
 func (m *MockDataParser) ActionInfo() (string, error) {
 	args := m.Called()
 	return args.String(0), args.Error(1)
 }
-
 func TestInfo(t *testing.T) {
 	// Set up log output capture
 	var logBuf bytes.Buffer
